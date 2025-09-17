@@ -7,7 +7,7 @@ const Core = () => {
   return (
 	<section className='max-w-[85%] mx-auto py-10 md:py-20'>
 	  <div className='text-center mb-10'>
-		<h1 className='font-extrabold text-primary text-[23px] md:text-[49px]'>Why Choose BillPro?</h1>
+		<h1 className='font-extrabold text-primary text-[23px] md:text-[49px]'>Why Choose BillWev?</h1>
 		<p className='font-semibold text-secondary text-xs md:text-[25px]'>Experience the difference with our platform</p>
 	  </div>
 
