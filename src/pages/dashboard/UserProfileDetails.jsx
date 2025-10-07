@@ -2,7 +2,7 @@ import React from 'react'
 import { IoArrowBackSharp } from "react-icons/io5";
 import { MdOutlineRefresh } from "react-icons/md";
 import { CheckCircle } from "lucide-react";
-import profileSummary from '../../assets/images/profileSummary.png'
+import profileSummary from '../../assets/images/ProfileSummary.png'
 import profilepicture from '../../assets/images/profilepicture.png'
 
 const UserProfileDetails = () => {
