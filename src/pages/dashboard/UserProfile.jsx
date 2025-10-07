@@ -3,7 +3,7 @@ import React from 'react'
 import Sidebar from '../../components/dashboard/shared/Sidebar'
 import DashboardNavbar from '../../components/dashboard/shared/DashboardNavbar'
 import Card from '../../components/dashboard/shared/Card';
-import profileSummary from '../../assets/images/profileSummary.png'
+import profileSummary from '../../assets/images/ProfileSummary.png'
 import profilepicture from '../../assets/images/profilepicture.png'
 import { CheckCircle } from "lucide-react";
 import { FaSackDollar } from "react-icons/fa6";
