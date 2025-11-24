@@ -27,7 +27,7 @@ const Footer = () => {
 				<p className='hidden md:block'>&copy; 2025 BillWev. All rights reserved.</p>
 				<ul className='flex flex-row gap-4 mt-4 md:mt-0'>
 					<li><a href=''>Terms of Service </a></li>
-					<li><a href=''>Privacy Policy</a></li>
+					<li><a href='/privacypolicy'>Privacy Policy</a></li>
 					<li><a href=''>Contact Us</a></li>
 				</ul>
 				<p className='md:hidden pt-5'>&copy; 2025 BillWev. All rights reserved.</p>
