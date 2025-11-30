@@ -1,63 +1,3 @@
-// import React, { useState } from 'react';
-// import { LuSearch } from "react-icons/lu";
-// import { MdNotifications } from "react-icons/md";
-// import profile from '../../../assets/images/profile.png'
-
-// const DashboardNavbar = ({title}) => {
-//   const [searchQuery, setSearchQuery] = useState('');
-
-//   const handleSearchChange = (e) => {
-//     setSearchQuery(e.target.value);
-//   };
-
-//   return (
-//     <header className="bg-white py-4 px-6 mx-auto my-4 rounded-3xl">
-//       <div className="flex justify-between">
-//         <div>
-//           <h1 className="text-[29px] font-bold text-secondaryLight">{title}</h1>
-//         </div>
-
-//         <div className='flex justify-between items-center space-x-4'>
-//           <div className="relative flex items-center">
-//             <input
-//               type="text"
-//               placeholder="Search here"
-//               value={searchQuery}
-//               onChange={handleSearchChange}
-//               className=" rounded-xl p-2 pl-5 pr-10 w-96 focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-[#F2F2F2] text-[#B7B7B7] text-base font-semibold"
-//             />
-//             <LuSearch className="absolute right-3 text-gray-400" />
-        
-//           </div>
-//           <button className="bg-gray-100 rounded-full p-2 text-black hover:scale-105">
-//             <MdNotifications size={24} className=''/>
-//           </button>
-//         </div>
-        
-//         <div className="flex items-center space-x-4">
-        
-//           <div className="flex items-center space-x-2">
-//             <img
-//               src={profile}
-//               alt="User Avatar"
-//               className="w-8 h-8 rounded-full"
-//             />
-//             <div>
-//               <p className="text-[13px] font-medium text-secondaryLight">Hi, Peter</p>
-//               <p className="text-[13px] text-gray-500">@peteokeke</p>
-//             </div>
-//           </div>
-//         </div>
-        
-//       </div>
-      
-//     </header>
-//   );
-// };
-
-// export default DashboardNavbar;
-
-
 
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -69,8 +9,8 @@ import profile from '../../../assets/images/profile.png';
 
 const DashboardNavbar = ({ title }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State for dropdown visibility
-  const wrapperRef = useRef(null); // Ref to track the profile section and dropdown
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+  const wrapperRef = useRef(null); 
 
   const user = JSON.parse(localStorage.getItem("admin_user")) || null;
 

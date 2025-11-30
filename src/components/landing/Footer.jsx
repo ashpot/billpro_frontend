@@ -9,7 +9,7 @@ const Footer = () => {
 	<footer className='py-10 bg-[#F2F2F2]'>
 		<div className='max-w-[85%] mx-auto '>
 			<div className='mb-5 md:my-5 flex items-center justify-center md:justify-start space-x-2'> 
-				<img src={logoIcon} alt="Logo icon" className='w-2/5 md:w-auto' />
+				<img src={logoIcon} alt="Logo icon" className='w-auto' />
 				<span className='text-secondaryLight font-bold text-[32px]'>BillWev</span>
 			</div>
 			<div className='flex flex-col md:flex-row items-center justify-between gap-4 text-secondary pb-5'>

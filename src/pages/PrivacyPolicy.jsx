@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Logo from '../assets/images/logo.png'
+import logoIcon from '../assets/images/Logo Icon.png';
 
 // H1 for main section titles
 const H1 = ({ children }) => (
@@ -34,11 +34,16 @@ const OL = ({ children }) => (
 const PrivacyPolicy = () => {
   return (
     <div className="bg-white min-h-screen text-[#1E1E1E]">
-      <img src={Logo} alt='billwev logo' className='p-10 ml-44' />
+      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 my-8'>
+        <a href='/' className='flex items-center space-x-4'>
+          <img src={logoIcon} alt="Logo Icon" className='w-auto' />
+          <span className='text-secondaryLight font-bold text-[32px]'>BillWev</span>
+        </a>
+      </div>
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         
-        <h1 className="text-6xl font-bold text-[#1E1E1E] mb-10">Privacy Policy</h1>
+        <h1 className="text-4xl md:text-6xl font-bold text-[#1E1E1E] mb-10">Privacy Policy</h1>
         <p className="text-lg font-medium mb-5">
           Last Updated: October, 2025
         </p>

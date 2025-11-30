@@ -23,6 +23,7 @@ import UserProfile from './pages/dashboard/UserProfile';
 import Referrals from './pages/dashboard/Referrals';
 import Reports from './pages/dashboard/Reports';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import RequestDelete from './pages/RequestDelete';
 
 function App() {
 
@@ -34,6 +35,7 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
         <Route path='/privacypolicy' element={<PrivacyPolicy />} />
+        <Route path='/request-delete' element={<RequestDelete />} />
 
         {/* Forgot password flow */}
         <Route path='/forgotpassword' element={<ForgotPassword />} />
