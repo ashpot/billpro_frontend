@@ -10,7 +10,7 @@ import { MdOutlinePendingActions } from 'react-icons/md';
 import { BiSolidError } from "react-icons/bi";
 
 
-const Education = () => {
+const Betting = () => {
   const [activeFilter, setActiveFilter] = useState("Day");
 
   
@@ -47,14 +47,14 @@ const Education = () => {
   ];
 
   return (
-	<div className='bg-gray-100 flex max-h-full'>
-		<Sidebar />
+    <div className='bg-gray-100 flex max-h-full'>
+        <Sidebar />
 
-		<div className='flex-1 space-y-8 p-4 mb-5 w-[80%]'>
-			<DashboardNavbar title="Education"/>
-			<Overview title="Overview" cardsData={cardsData}/>
-			
-			<Transactions
+        <div className='flex-1 space-y-8 p-4 mb-5 w-[80%]'>
+            <DashboardNavbar title="Betting"/>
+            <Overview title="Overview" cardsData={cardsData}/>
+            
+            <Transactions
         title="Transactions"
         columns={[
           { header: "Transaction ID", key: "id" },
@@ -87,10 +87,10 @@ const Education = () => {
           { id: "TXN_002_4848499", customer: "Chidi", amount: "₦10,000", network: "GLO-NG", status: "Failed", date: "Jul 20, 2025 | 13:22" }
         ]} 
       />
-		</div>
-	  
-	</div>
+        </div>
+      
+    </div>
   )
 }
 
-export default Education;
+export default Betting;

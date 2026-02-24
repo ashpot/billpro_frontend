@@ -6,6 +6,8 @@ import {
   MdPhone,
   MdOutlineFlight,
   MdInsertChart,
+  MdOutlineElectricBolt,
+  MdTv
 } from "react-icons/md";
 import { RiGraduationCapFill } from "react-icons/ri";
 import { PiUsersThreeFill, PiUsersFourFill } from "react-icons/pi";
@@ -31,12 +33,12 @@ const Sidebar = () => {
   );
 
   const inServices = [
-    "/dashboard/airtime",
-    "/dashboard/convert-airtime",
-    "/dashboard/data",
-    "/dashboard/education",
-    "/dashboard/flights",
-    "/dashboard/services",
+    "/dashboard/services/airtime",
+    "/dashboard/services/betting",
+    "/dashboard/services/data",
+    "/dashboard/services/education",
+    "/dashboard/swervices/tv",
+    "/dashboard/services/list",
   ].some((p) => location.pathname.startsWith(p));
   const inOthers = [
     "/dashboard/referrals",
@@ -69,10 +71,12 @@ const Sidebar = () => {
             <PiUsersThreeFill size={24} className="mr-2" />
             Users
           </NavLink>
+          {/*}
           <NavLink to="/dashboard/chats" className={linkClasses}>
             <HiMiniChatBubbleBottomCenterText size={24} className="mr-2" />
             Chats
           </NavLink>
+          */}
 
           {/* Services Section */}
           <h3
@@ -86,21 +90,23 @@ const Sidebar = () => {
             <MdPhone size={20} className="mr-3" />
             Airtime
           </NavLink>
-          <NavLink to="/dashboard/convert-airtime" className={linkClasses}>
+          
+          <NavLink to="/dashboard/betting" className={linkClasses}>
             <CgArrowsExchange size={24} className="mr-2" />
-            Convert Airtime
+            Betting
           </NavLink>
+          
           <NavLink to="/dashboard/data" className={linkClasses}>
             <PiWifiMediumBold size={24} className="mr-2" />
             Data
           </NavLink>
-          <NavLink to="/dashboard/education" className={linkClasses}>
-            <RiGraduationCapFill size={20} className="mr-3" />
-            Education
+          <NavLink to="/dashboard/electricity" className={linkClasses}>
+            <MdOutlineElectricBolt size={20} className="mr-3" />
+            Electricity
           </NavLink>
-          <NavLink to="/dashboard/flights" className={linkClasses}>
-            <MdOutlineFlight size={24} className="mr-2" />
-            Flights
+          <NavLink to="/dashboard/tv" className={linkClasses}>
+            <MdTv size={24} className="mr-2" />
+            TV
           </NavLink>
           <div className="flex justify-center pt-4">
             <NavLink to="/dashboard/services" >

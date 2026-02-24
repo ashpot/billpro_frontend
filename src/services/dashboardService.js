@@ -1,6 +1,41 @@
 // src/services/dashboardService.js
 
-const API_BASE = "https://billwev.pythonanywhere.com/api/v1/rest-auth/";
+import { API_BASE } from "./serviceURLs";
+
+
+export const formatAmount = (amount) => {
+  return "₦" + new Intl.NumberFormat("en-NG", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(Number(amount));
+};
+
+export const formatDate = (dateString) => {
+  const date = new Date(dateString);
+
+  const day = date.getDate();
+
+  const getOrdinal = (n) => {
+    if (n > 3 && n < 21) return "th";
+    switch (n % 10) {
+      case 1: return "st";
+      case 2: return "nd";
+      case 3: return "rd";
+      default: return "th";
+    }
+  };
+
+  const month = date.toLocaleString("en-GB", { month: "short" });
+  const year = date.getFullYear();
+
+  const time = date.toLocaleString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
+
+  return `${day}${getOrdinal(day)} ${month}, ${year} ${time}`;
+};
 
 // --- helper ---
 async function request(url, options = {}) {
@@ -34,7 +69,20 @@ export async function getAdminDashboard(period = "month") {
   const token = localStorage.getItem("admin_token");
   if (!token) throw new Error("Not authenticated");
 
-  return request(`${API_BASE}admin_dashboard/`, {
+  return request(`${API_BASE}admin/dashboard/`, {
+    method: "GET",
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
+}
+
+
+export async function getAirtimeDashboard() {
+  const token = localStorage.getItem("admin_token");
+  if (!token) throw new Error("Not authenticated");
+
+  return request(`${API_BASE}admin/services/airtime/`, {
     method: "GET",
     headers: {
       Authorization: `Token ${token}`,

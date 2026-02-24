@@ -1,6 +1,5 @@
 // src/services/userService.js
-
-const API_BASE = "https://billwev.pythonanywhere.com/api/v1/rest-auth/";
+import { API_BASE } from "./serviceURLs";
 
 async function request(url, options = {}) {
   const token = localStorage.getItem("admin_token");
@@ -33,5 +32,5 @@ async function request(url, options = {}) {
 
 // GET Admin Users
 export function getAdminUsers() {
-  return request(`${API_BASE}/admin_user_management/`);
+  return request(`${API_BASE}admin/users/`);
 }

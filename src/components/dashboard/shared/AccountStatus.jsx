@@ -1,11 +1,11 @@
 
 import React from 'react';
 
-const AccountStatus = () => {
+const AccountStatus = (active, pending, deactivated) => {
   const accountData = [
-    { label: "Active", percent: 70, color: "bg-green-500" },
-    { label: "Suspended", percent: 20, color: "bg-yellow-500" },
-    { label: "Deactivated", percent: 10, color: "bg-red-500" },
+    { label: "Active", percent: active, color: "bg-green-500" },
+    { label: "Suspended", percent: pending, color: "bg-yellow-500" },
+    { label: "Deactivated", percent: deactivated, color: "bg-red-500" },
   ];
 
   return (

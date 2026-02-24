@@ -13,13 +13,13 @@ import { MdTv } from "react-icons/md";
 const data = [
   { icon: <MdPhone size={24} className="bg-[#FF3030] text-white p-2 rounded-full w-12 h-12" />, title: "Airtime", volume: "₦1.3M" },
   { icon: <BiColor size={24} className="bg-[#2785D2] text-white p-2 rounded-full w-12 h-12" />, title: "Betting", volume: "₦1.1M" },
-  { icon: <CgArrowsExchange size={24} className="bg-[#FDB813] text-white p-2 rounded-full w-12 h-12" />, title: "Convert Airtime", volume: "₦982K" },
+  /*{ icon: <CgArrowsExchange size={24} className="bg-[#FDB813] text-white p-2 rounded-full w-12 h-12" />, title: "Convert Airtime", volume: "₦982K" },*/
   { icon: <PiWifiMediumBold size={24} className="bg-[#56CCF2] text-white p-2 rounded-full w-12 h-12" />, title: "Data", volume: "₦2.1M" },
   { icon: <RiGraduationCapFill size={24} className="bg-[#FD8813] text-white p-2 rounded-full w-12 h-12" />, title: "Education", volume: "₦879K" },
   { icon: <MdOutlineElectricBolt size={24} className="bg-[#27D26E] text-white p-2 rounded-full w-12 h-12" />, title: "Electricity", volume: "₦2.3M" },
-  { icon: <MdOutlineFlight size={24} className="bg-[#EF5DA8] text-white p-2 rounded-full w-12 h-12" />, title: "Flights", volume: "₦7.9M" },
+  /*{ icon: <MdOutlineFlight size={24} className="bg-[#EF5DA8] text-white p-2 rounded-full w-12 h-12" />, title: "Flights", volume: "₦7.9M" },
   { icon: <HiGiftTop size={24} className="bg-[#9B51E0] text-white p-2 rounded-full w-12 h-12" />, title: "Gift Cards", volume: "₦992K" },
-  { icon: <HiSun size={24} className="bg-[#FDB813] text-white p-2 rounded-full w-12 h-12" />, title: "Solar", volume: "₦483K" },
+  { icon: <HiSun size={24} className="bg-[#FDB813] text-white p-2 rounded-full w-12 h-12" />, title: "Solar", volume: "₦483K" },*/
   { icon: <MdTv size={24} className="bg-[#27D26E] text-white p-2 rounded-full w-12 h-12" />, title: "Television", volume: "₦1.2M" },
 ];
 

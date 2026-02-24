@@ -7,8 +7,11 @@ import SignupPage from './pages/auth/SignupPage';
 import DashboardPage from './pages/dashboard/DashboardPage';
 import Airtime from './pages/dashboard/Airtime';
 import Data from './pages/dashboard/Data';
+import Betting from './pages/dashboard/Betting';
+import Electricity from './pages/dashboard/Electricity';
 import Flights from './pages/dashboard/Flights';
 import Education from './pages/dashboard/Education';
+import TV from './pages/dashboard/Tv';
 import Services from './pages/dashboard/Services';
 import Users from './pages/dashboard/Users';
 import Chats from './pages/dashboard/Chats';
@@ -47,6 +50,9 @@ function App() {
         <Route path='/dashboard' element={<DashboardPage />} />
         <Route path='/dashboard/airtime' element={<Airtime />} />
         <Route path='/dashboard/data' element={<Data />} />
+        <Route path='/dashboard/betting' element={<Betting />} />
+        <Route path='/dashboard/electricity' element={<Electricity />} />
+        <Route path='/dashboard/tv' element={<TV/>} />
         <Route path='/dashboard/flights' element={<Flights />} />
         <Route path='/dashboard/education' element={<Education />} />
         <Route path='/dashboard/services' element={<Services />} />

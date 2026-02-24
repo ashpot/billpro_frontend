@@ -169,6 +169,7 @@ const Users = () => {
         setError("");
 
         const data = await getAdminUsers();
+        console.log(data);
 
         const cards = [
           {
@@ -182,7 +183,7 @@ const Users = () => {
             icon: LiaUserCheckSolid,
             color: 'text-[#27D26E]',
             bgColor: 'green',
-            value: data.verifed_count,
+            value: data.verified_count,
             label: "Verified Users",
           },
           {
@@ -272,7 +273,11 @@ const Users = () => {
           </div>
 
           <div className='space-y-5'>
-            <AccountStatus />
+            <AccountStatus 
+             active = {data.verified_percentage}
+             pending = {data.pending_percentage}
+             deactivated = {data.deactivated_percentage}
+            />
             <KYCStatus />
           </div>
         </div>
