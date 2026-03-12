@@ -10,6 +10,11 @@ export const formatAmount = (amount) => {
   }).format(Number(amount));
 };
 
+export const  formatToken = (num)  => {
+  if (num == null) return "-"
+  return num.match(/.{1,4}/g).join("-");
+}
+
 export const formatDate = (dateString) => {
   const date = new Date(dateString);
 
@@ -83,6 +88,72 @@ export async function getAirtimeDashboard() {
   if (!token) throw new Error("Not authenticated");
 
   return request(`${API_BASE}admin/services/airtime/`, {
+    method: "GET",
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
+}
+
+
+
+export async function getBettingDashboard() {
+  const token = localStorage.getItem("admin_token");
+  if (!token) throw new Error("Not authenticated");
+
+  return request(`${API_BASE}admin/services/betting/`, {
+    method: "GET",
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
+}
+
+
+export async function getDataDashboard() {
+  const token = localStorage.getItem("admin_token");
+  if (!token) throw new Error("Not authenticated");
+
+  return request(`${API_BASE}admin/services/data/`, {
+    method: "GET",
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
+}
+
+
+export async function getEducationDashboard() {
+  const token = localStorage.getItem("admin_token");
+  if (!token) throw new Error("Not authenticated");
+
+  return request(`${API_BASE}admin/services/education/`, {
+    method: "GET",
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
+}
+
+
+export async function getElectricityDashboard() {
+  const token = localStorage.getItem("admin_token");
+  if (!token) throw new Error("Not authenticated");
+
+  return request(`${API_BASE}admin/services/electricity/`, {
+    method: "GET",
+    headers: {
+      Authorization: `Token ${token}`,
+    },
+  });
+}
+
+
+export async function getTVDashboard() {
+  const token = localStorage.getItem("admin_token");
+  if (!token) throw new Error("Not authenticated");
+
+  return request(`${API_BASE}admin/services/tv/`, {
     method: "GET",
     headers: {
       Authorization: `Token ${token}`,

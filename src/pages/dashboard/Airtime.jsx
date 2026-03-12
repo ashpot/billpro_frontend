@@ -170,7 +170,7 @@ const Airtime = () => {
                 header: "Action",
                 key: "action",
                 render: (_, row) =>
-            row.status !== "Successful" && (
+            row.status == "Pending" && (
               <button
                 onClick={() => handleRequery(row.id)}
                 disabled={loadingId === row.id}
