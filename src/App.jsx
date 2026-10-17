@@ -25,6 +25,8 @@ import UserProfileDetails from './pages/dashboard/UserProfileDetails';
 import UserProfile from './pages/dashboard/UserProfile';
 import Referrals from './pages/dashboard/Referrals';
 import Reports from './pages/dashboard/Reports';
+import WithdrawalRequests from './pages/dashboard/WithdrawalRequests';
+import Notification from './pages/dashboard/Notifications';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import RequestDelete from './pages/RequestDelete';
 
@@ -35,35 +37,37 @@ function App() {
       <Routes>
         {/* Landing & Auth */}
         <Route path='/' element={<Index />} />
-        <Route path='/login' element={<LoginPage />} />
-        <Route path='/signup' element={<SignupPage />} />
+        <Route path='/auth/login' element={<LoginPage />} />
+        <Route path='/auth/signup' element={<SignupPage />} />
         <Route path='/privacypolicy' element={<PrivacyPolicy />} />
         <Route path='/request-delete' element={<RequestDelete />} />
 
         {/* Forgot password flow */}
-        <Route path='/forgotpassword' element={<ForgotPassword />} />
+        <Route path='/auth/forgot-password' element={<ForgotPassword />} />
         <Route path='/checkemail' element={<CheckEmail />} />
-        <Route path='/resetpassword/:token' element={<ResetPassword />} />
-        <Route path='/securedpassword' element={<SecuredPassword />} />
+        <Route path='/auth/reset-password/:token' element={<ResetPassword />} />
+        <Route path='/auth/secured-password' element={<SecuredPassword />} />
 
         {/* Dashboard & Sub-pages */}
-        <Route path='/dashboard' element={<DashboardPage />} />
-        <Route path='/dashboard/airtime' element={<Airtime />} />
-        <Route path='/dashboard/data' element={<Data />} />
-        <Route path='/dashboard/betting' element={<Betting />} />
-        <Route path='/dashboard/electricity' element={<Electricity />} />
-        <Route path='/dashboard/tv' element={<TV/>} />
-        <Route path='/dashboard/flights' element={<Flights />} />
-        <Route path='/dashboard/education' element={<Education />} />
-        <Route path='/dashboard/services' element={<Services />} />
-        <Route path='/dashboard/users' element={<Users />} />
-        <Route path='/dashboard/chats' element={<Chats />} />
-        <Route path='/dashboard/transactiondetails' element={<TransactionDetails />} />
-        <Route path='/dashboard/settings' element={<Settings />} />
-        <Route path='/dashboard/userprofile' element={<UserProfile />} />
-        <Route path='/dashboard/userprofiledetails' element={<UserProfileDetails />} />
-        <Route path='/dashboard/referrals' element={<Referrals />} />
-        <Route path='/dashboard/reports' element={<Reports />} />
+        <Route path='/admin/dashboard' element={<DashboardPage />} />
+        <Route path='/admin/airtime/overview' element={<Airtime />} />
+        <Route path='/admin/data/overview' element={<Data />} />
+        <Route path='/admin/betting/overview' element={<Betting />} />
+        <Route path='/admin/electricity/overview' element={<Electricity />} />
+        <Route path='/admin/tv/overview' element={<TV/>} />
+        <Route path='/admin/flights/overview' element={<Flights />} />
+        <Route path='/admin/education/overview' element={<Education />} />
+        <Route path='/admin/services' element={<Services />} />
+        <Route path='/admin/users/overview' element={<Users />} />
+        <Route path='/admin/chats' element={<Chats />} />
+        <Route path='/admin/transactions/:id' element={<TransactionDetails />} />
+        <Route path='/admin/settings/' element={<Settings />} />
+        <Route path='/admin/users/profile' element={<UserProfile />} />
+        <Route path='/admin/users/profile/:id' element={<UserProfileDetails />} />
+        <Route path='/admin/referrals/overview' element={<Referrals />} />
+        <Route path='/admin/reports' element={<Reports />} />
+        <Route path='/admin/withdrawal-requests' element={<WithdrawalRequests />} />
+        <Route path='/admin/notifications' element={<Notification />} />
       </Routes>
     </BrowserRouter>
   )

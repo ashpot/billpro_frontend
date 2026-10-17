@@ -7,7 +7,10 @@ import {
   MdOutlineFlight,
   MdInsertChart,
   MdOutlineElectricBolt,
-  MdTv
+  MdTv,
+  MdMoneyOff,
+  MdAccountBalanceWallet, 
+  MdNotifications
 } from "react-icons/md";
 import { RiGraduationCapFill } from "react-icons/ri";
 import { PiUsersThreeFill, PiUsersFourFill } from "react-icons/pi";
@@ -28,7 +31,7 @@ const Sidebar = () => {
 
   // Section highlight logic
   const inMain =
-    ["/dashboard", "/dashboard/users", "/dashboard/chats"].some((p) =>
+    ["/admin/dashboard", "/admin/users/overview", "/admin/chats"].some((p) =>
       location.pathname.startsWith(p)
   );
 
@@ -42,6 +45,8 @@ const Sidebar = () => {
   ].some((p) => location.pathname.startsWith(p));
   const inOthers = [
     "/dashboard/referrals",
+    "/dashboard/withdrawal-requests",
+    "/dashboard/notifications",
     "/dashboard/reports",
   ].some((p) => location.pathname.startsWith(p));
 
@@ -63,11 +68,11 @@ const Sidebar = () => {
           >
             Main
           </h3>
-          <NavLink to="/dashboard" end className={linkClasses}>
+          <NavLink to="/admin/dashboard" end className={linkClasses}>
             <MdDashboardCustomize size={24} className="mr-2" />
             Dashboard
           </NavLink>
-          <NavLink to="/dashboard/users" className={linkClasses}>
+          <NavLink to="/admin/users/overview" className={linkClasses}>
             <PiUsersThreeFill size={24} className="mr-2" />
             Users
           </NavLink>
@@ -86,30 +91,30 @@ const Sidebar = () => {
           >
             Services
           </h3>
-          <NavLink to="/dashboard/airtime" className={linkClasses}>
+          <NavLink to="/admin/airtime/overview" className={linkClasses}>
             <MdPhone size={20} className="mr-3" />
             Airtime
           </NavLink>
           
-          <NavLink to="/dashboard/betting" className={linkClasses}>
+          <NavLink to="/admin/betting/overview" className={linkClasses}>
             <CgArrowsExchange size={24} className="mr-2" />
             Betting
           </NavLink>
           
-          <NavLink to="/dashboard/data" className={linkClasses}>
+          <NavLink to="/admin/data/overview" className={linkClasses}>
             <PiWifiMediumBold size={24} className="mr-2" />
             Data
           </NavLink>
-          <NavLink to="/dashboard/electricity" className={linkClasses}>
+          <NavLink to="/admin/electricity/overview" className={linkClasses}>
             <MdOutlineElectricBolt size={20} className="mr-3" />
             Electricity
           </NavLink>
-          <NavLink to="/dashboard/tv" className={linkClasses}>
+          <NavLink to="/admin/tv/overview" className={linkClasses}>
             <MdTv size={24} className="mr-2" />
             TV
           </NavLink>
           <div className="flex justify-center pt-4">
-            <NavLink to="/dashboard/services" >
+            <NavLink to="/admin/services" >
               <button className="p-4 text-center text-sm font-bold text-secondary uppercase bg-[#F2F2F2] hover:bg-amber-100 hover:text-primary py-2 rounded-md">
                 See All
               </button>
@@ -124,11 +129,19 @@ const Sidebar = () => {
           >
             Others
           </h3>
-          <NavLink to="/dashboard/referrals" className={linkClasses}>
+          <NavLink to="/admin/referrals/overview" className={linkClasses}>
             <PiUsersFourFill size={24} className="mr-2" />
             Referrals
           </NavLink>
-          <NavLink to="/dashboard/reports" className={linkClasses}>
+           <NavLink to="/admin/withdrawal-requests" className={linkClasses}>
+           <MdAccountBalanceWallet  size={24} className="mr-2" />
+            Withdrawal Requests
+          </NavLink>
+          <NavLink to="/admin/notifications" className={linkClasses}>
+           <MdNotifications  size={24} className="mr-2" />
+            Notifications
+          </NavLink>
+          <NavLink to="/admin/reports" className={linkClasses}>
             <MdInsertChart size={24} className="mr-2" />
             Reports
           </NavLink>

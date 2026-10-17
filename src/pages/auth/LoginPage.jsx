@@ -64,7 +64,7 @@ const LoginPage = () => {
 
       setMessage("Login successful!");
       
-      if(response.status == 200) navigate("/dashboard"); 
+      if(response.status == 200) navigate("/admin/dashboard"); 
     } catch (err) {
       setError(err.message || "Login failed");
     } finally {
@@ -82,7 +82,7 @@ const LoginPage = () => {
       <div className="flex justify-between gap-14 h-full">
         {/* Left Side - Login Form */}
         <div className="w-1/2 py-10">
-          <h2 className="text-3xl text-secondaryLight font-bold mb-2">Login</h2>
+          <h2 className="text-3xl text-secondaryLight font-bold mb-2">Admin Login</h2>
           <p className="text-[#B7B7B7] text-sm font-medium mb-6">
             Welcome back, please enter your details.
           </p>
@@ -150,11 +150,10 @@ const LoginPage = () => {
               {isLoading ? 'Signing In...' : 'Login'}
             </button>
           </form>
-          <p className="text-sm font-semibold text-[#B7B7B7] mt-4">
-            Don't have an account?{' '}
-            <a href="/signup" className="text-primary ml-2 hover:underline">
-              Create Account
-            </a>
+          <p className="text-sm font-normal text-[#B7B7B7] mt-4">
+            Manage utility payments, monitor transactions, oversee customer accounts, and keep Billwev running smoothly. 
+            Sign in to access your dashboard and manage your operations securely.
+            
           </p>
           {message && <p className="text-center text-green-500 mt-4">{message}</p>}
           {error && <p className="text-center text-red-500 mt-4">{error}</p>}
