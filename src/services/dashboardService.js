@@ -1,7 +1,4 @@
-// src/services/dashboardService.js
-
-import { API_BASE } from "./serviceURLs";
-
+import { apiRequest } from "./apiClient";
 
 export const formatAmount = (amount) => {
   return "₦" + new Intl.NumberFormat("en-NG", {
@@ -10,16 +7,16 @@ export const formatAmount = (amount) => {
   }).format(Number(amount));
 };
 
-export const  formatToken = (num)  => {
-  if (num == null) return "-"
-  return num.match(/.{1,4}/g).join("-");
-}
+export const formatToken = (num) => {
+  if (num == null) return "-";
+  return String(num).match(/.{1,4}/g)?.join("-") ?? String(num);
+};
 
 export const formatDate = (dateString) => {
   const date = new Date(dateString);
+  if (Number.isNaN(date.getTime())) return "-";
 
   const day = date.getDate();
-
   const getOrdinal = (n) => {
     if (n > 3 && n < 21) return "th";
     switch (n % 10) {
@@ -32,7 +29,6 @@ export const formatDate = (dateString) => {
 
   const month = date.toLocaleString("en-GB", { month: "short" });
   const year = date.getFullYear();
-
   const time = date.toLocaleString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
@@ -42,121 +38,35 @@ export const formatDate = (dateString) => {
   return `${day}${getOrdinal(day)} ${month}, ${year} ${time}`;
 };
 
-// --- helper ---
-async function request(url, options = {}) {
-  console.log("➡️ Fetching:", url, options); 
-  const res = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Token ${localStorage.getItem("admin_token")}`,
-      ...(options.headers || {}),
-    },
-    ...options,
-  });
 
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) {
-    const message =
-      data?.error ||
-      data?.message ||
-      (Array.isArray(data?.non_field_errors) ? data.non_field_errors.join(", ") : "") ||
-      `Request failed (${res.status})`;
-    const err = new Error(message);
-    err.status = res.status;
-    err.body = data;
-    throw err;
-  }
-     // ✅ return both data and status
-  return { status: res.status, data };
-}
+export function getAdminDashboard(period = "month") {
+  const params = new URLSearchParams({ period });
 
-export async function getAdminDashboard(period = "month") {
-  const token = localStorage.getItem("admin_token");
-  if (!token) throw new Error("Not authenticated");
-
-  return request(`${API_BASE}admin/dashboard/`, {
+  return apiRequest(`admin/dashboard/?${params.toString()}`, {
     method: "GET",
-    headers: {
-      Authorization: `Token ${token}`,
-    },
   });
 }
 
-
-export async function getAirtimeDashboard() {
-  const token = localStorage.getItem("admin_token");
-  if (!token) throw new Error("Not authenticated");
-
-  return request(`${API_BASE}admin/services/airtime/`, {
-    method: "GET",
-    headers: {
-      Authorization: `Token ${token}`,
-    },
-  });
+export function getAirtimeDashboard() {
+  return apiRequest("admin/services/airtime/", { method: "GET" });
 }
 
-
-
-export async function getBettingDashboard() {
-  const token = localStorage.getItem("admin_token");
-  if (!token) throw new Error("Not authenticated");
-
-  return request(`${API_BASE}admin/services/betting/`, {
-    method: "GET",
-    headers: {
-      Authorization: `Token ${token}`,
-    },
-  });
+export function getBettingDashboard() {
+  return apiRequest("admin/services/betting/", { method: "GET" });
 }
 
-
-export async function getDataDashboard() {
-  const token = localStorage.getItem("admin_token");
-  if (!token) throw new Error("Not authenticated");
-
-  return request(`${API_BASE}admin/services/data/`, {
-    method: "GET",
-    headers: {
-      Authorization: `Token ${token}`,
-    },
-  });
+export function getDataDashboard() {
+  return apiRequest("admin/services/data/", { method: "GET" });
 }
 
-
-export async function getEducationDashboard() {
-  const token = localStorage.getItem("admin_token");
-  if (!token) throw new Error("Not authenticated");
-
-  return request(`${API_BASE}admin/services/education/`, {
-    method: "GET",
-    headers: {
-      Authorization: `Token ${token}`,
-    },
-  });
+export function getEducationDashboard() {
+  return apiRequest("admin/services/education/", { method: "GET" });
 }
 
-
-export async function getElectricityDashboard() {
-  const token = localStorage.getItem("admin_token");
-  if (!token) throw new Error("Not authenticated");
-
-  return request(`${API_BASE}admin/services/electricity/`, {
-    method: "GET",
-    headers: {
-      Authorization: `Token ${token}`,
-    },
-  });
+export function getElectricityDashboard() {
+  return apiRequest("admin/services/electricity/", { method: "GET" });
 }
 
-
-export async function getTVDashboard() {
-  const token = localStorage.getItem("admin_token");
-  if (!token) throw new Error("Not authenticated");
-
-  return request(`${API_BASE}admin/services/tv/`, {
-    method: "GET",
-    headers: {
-      Authorization: `Token ${token}`,
-    },
-  });
+export function getTVDashboard() {
+  return apiRequest("admin/services/tv/", { method: "GET" });
 }

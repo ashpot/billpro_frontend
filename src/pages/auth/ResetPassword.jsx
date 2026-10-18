@@ -190,13 +190,14 @@ const ResetPassword = () => {
     }
 
     try {
-      const data = await adminResetPassword({
+      const response = await adminResetPassword({
         token,
         password,
         password2: confirmPassword,
       });
+      const data = response.data || {};
 
-      setMessage(data.success || 'Password has been successfully reset!');
+      setMessage(data.success || data.message || 'Password has been successfully reset!');
       navigate("/securedpassword");
     } catch (err) {
       setError(err.message || 'Failed to reset password');

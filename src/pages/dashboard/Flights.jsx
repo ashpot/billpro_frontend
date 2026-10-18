@@ -137,37 +137,11 @@ const Flights = () => {
 				</div>
 			</div>
 			<Transactions
-				title="Recent Transactions"
-				columns={[
-					{ header: "Biller", key: "biller" },
-					{ header: "Customer", key: "customer" },
-					{ header: "Amount", key: "amount" },
-					{ header: "Desc", key: "desc" },
-					{
-						header: "Status",
-						key: "status",
-						render: (value) => (
-						<span
-							className={`px-2 py-1 rounded-full text-xs font-semibold ${
-							value === "Completed"
-								? "bg-green-200 text-green-800"
-								: value === "Pending"
-								? "bg-yellow-200 text-yellow-800"
-								: "bg-red-200 text-red-800"
-							}`}
-						>
-							{value}
-						</span>
-						),
-					},
-					{ header: "Date | Time", key: "date" },
-				]}
-				data={[
-					{ biller: "Air Peace", customer: "Chioma", amount: "₦12,000", desc: "ABJ - LAG", status: "Completed", date: "Jul 20, 2025 | 13:21" },
-					{ biller: "Ibom Air", customer: "Fummi", amount: "₦1,200", desc: "KANO - ENU", status: "Pending", date: "Jul 20, 2025 | 13:22" },
-					{ biller: "Emirates", customer: "Chidi", amount: "₦10,000", desc: "LAG - OWR", status: "Failed", date: "Jul 20, 2025 | 13:22" }
-				]} 
-			/>
+  title="Recent Transactions"
+  showActions={true}
+  onRequery={(transaction) => handleRequery(transaction.id)}
+  data={dashboardData.transactions ?? []}
+/>
 		</div>
 	  
 	</div>

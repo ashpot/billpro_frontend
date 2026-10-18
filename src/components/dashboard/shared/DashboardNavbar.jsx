@@ -1,6 +1,7 @@
 
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { LuSearch } from "react-icons/lu";
 import { MdNotifications } from "react-icons/md";
 import { FiPower } from "react-icons/fi"; 
@@ -12,7 +13,16 @@ const DashboardNavbar = ({ title }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
   const wrapperRef = useRef(null); 
 
-  const user = JSON.parse(localStorage.getItem("admin_user")) || null;
+  const navigate = useNavigate();
+
+  const [user, setUser] = useState(() => {
+    try {
+      const storedUser = localStorage.getItem("admin_user");
+      return storedUser ? JSON.parse(storedUser) : null;
+    } catch {
+      return null;
+    }
+  });
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -20,6 +30,16 @@ const DashboardNavbar = ({ title }) => {
 
   const handleProfileClick = () => {
     setIsDropdownOpen(!isDropdownOpen); // Toggle dropdown visibility
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("admin_token");
+    localStorage.removeItem("admin_user");
+
+    setUser(null);
+    setIsDropdownOpen(false);
+
+    navigate("/auth/login", { replace: true });
   };
 
   // Handle click outside to close dropdown
@@ -75,18 +95,26 @@ const DashboardNavbar = ({ title }) => {
               className="w-8 h-8 rounded-full"
             />
             <div>
-              <p className="text-[13px] font-semibold text-secondaryLight">Hi, {user.first_name}</p>
-              <p className="text-[13px] font-semibold text-[#B7B7B7]">@{user.username}</p>
+              <p className="text-[13px] font-semibold text-secondaryLight">
+                Hi, {user?.first_name || user?.username || "Admin"}
+              </p>
+              <p className="text-[13px] font-semibold text-[#B7B7B7]">
+                {user?.username ? `@${user.username}` : ""}
+              </p>
             </div>
           </div>
 
           {/* Dropdown Menu */}
           {isDropdownOpen && (
             <div className="absolute font-medium text-base top-full right-0 w-44 bg-white rounded-2xl shadow-lg py-2 z-10">
-              <div className="flex items-center px-4 py-2 text-secondaryLight hover:bg-gray-100 cursor-pointer">
-                <FiPower className="mr-4 " />
+              <button
+                type="button"
+                onClick={handleLogout}
+                className="flex w-full items-center px-4 py-2 text-secondaryLight hover:bg-gray-100 cursor-pointer text-left"
+              >
+                <FiPower className="mr-4" />
                 <span>Logout</span>
-              </div>
+              </button>
               <a href='/dashboard/settings' className="flex items-center px-4 py-2 text-secondaryLight hover:bg-gray-100 cursor-pointer">
                 <FiSettings className="mr-4" />
                 <span>Settings</span>

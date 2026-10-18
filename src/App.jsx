@@ -1,39 +1,66 @@
-import React from 'react';
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './css/styles.css';
-import Index from './pages/LandingPage'
+
+
+
+const DashboardPage = lazy(() => import("./pages/dashboard/DashboardPage"));
+const Airtime = lazy(() => import("./pages/dashboard/Airtime"));
+const Data = lazy(() => import("./pages/dashboard/Data"));
+const Betting = lazy(() => import("./pages/dashboard/Betting"));
+const Electricity = lazy(() => import("./pages/dashboard/Electricity"));
+const Flights = lazy(() => import("./pages/dashboard/Flights"));
+const Education = lazy(() => import("./pages/dashboard/Education"));
+const TV = lazy(() => import("./pages/dashboard/Tv"));
+const Services = lazy(() => import("./pages/dashboard/Services"));
+const Users = lazy(() => import("./pages/dashboard/Users"));
+
+const Chats = lazy(() => import("./pages/dashboard/Chats"));
+const TransactionDetails = lazy(
+  () => import("./pages/dashboard/TransactionDetails")
+);
+const Settings = lazy(() => import("./pages/dashboard/Settings"));
+const UserProfileDetails = lazy(
+  () => import("./pages/dashboard/UserProfileDetails")
+);
+const UserProfile = lazy(() => import("./pages/dashboard/UserProfile"));
+const Referrals = lazy(() => import("./pages/dashboard/Referrals"));
+const Reports = lazy(() => import("./pages/dashboard/Reports"));
+const WithdrawalRequests = lazy(
+  () => import("./pages/dashboard/WithdrawalRequests")
+);
+const Notification = lazy(
+  () => import("./pages/dashboard/Notifications")
+);
+
+import UserDetailsPage from "./pages/dashboard/UserDetailsPage";
+/*{ ---- auth pages ---- }*/
 import LoginPage from './pages/auth/LoginPage';
 import SignupPage from './pages/auth/SignupPage';
-import DashboardPage from './pages/dashboard/DashboardPage';
-import Airtime from './pages/dashboard/Airtime';
-import Data from './pages/dashboard/Data';
-import Betting from './pages/dashboard/Betting';
-import Electricity from './pages/dashboard/Electricity';
-import Flights from './pages/dashboard/Flights';
-import Education from './pages/dashboard/Education';
-import TV from './pages/dashboard/Tv';
-import Services from './pages/dashboard/Services';
-import Users from './pages/dashboard/Users';
-import Chats from './pages/dashboard/Chats';
-import TransactionDetails from './pages/dashboard/TransactionDetails';
-import Settings from './pages/dashboard/Settings';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import CheckEmail from './pages/auth/CheckEmail';
 import ResetPassword from './pages/auth/ResetPassword';
 import SecuredPassword from './pages/auth/SecuredPassword';
-import UserProfileDetails from './pages/dashboard/UserProfileDetails';
-import UserProfile from './pages/dashboard/UserProfile';
-import Referrals from './pages/dashboard/Referrals';
-import Reports from './pages/dashboard/Reports';
-import WithdrawalRequests from './pages/dashboard/WithdrawalRequests';
-import Notification from './pages/dashboard/Notifications';
+
+/* { ----- landing pages ----- } */
+import Index from './pages/LandingPage'
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import RequestDelete from './pages/RequestDelete';
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
 
   return (
     <BrowserRouter>
+    <Suspense
+    fallback={
+      <div className="flex min-h-screen items-center justify-center bg-gray-100">
+        <p className="text-lg font-semibold text-gray-600">
+          Loading page...
+        </p>
+      </div>
+    }
+  >
       <Routes>
         {/* Landing & Auth */}
         <Route path='/' element={<Index />} />
@@ -42,33 +69,55 @@ function App() {
         <Route path='/privacypolicy' element={<PrivacyPolicy />} />
         <Route path='/request-delete' element={<RequestDelete />} />
 
+        <Route
+          path="/admin/users/:id"
+          element={<UserDetailsPage />}
+        />
+
         {/* Forgot password flow */}
         <Route path='/auth/forgot-password' element={<ForgotPassword />} />
         <Route path='/checkemail' element={<CheckEmail />} />
-        <Route path='/auth/reset-password/:token' element={<ResetPassword />} />
-        <Route path='/auth/secured-password' element={<SecuredPassword />} />
+        {/* Password reset routes */}
+          <Route path="/auth/reset-password/:token" element={<ResetPassword />} />
 
-        {/* Dashboard & Sub-pages */}
-        <Route path='/admin/dashboard' element={<DashboardPage />} />
-        <Route path='/admin/airtime/overview' element={<Airtime />} />
-        <Route path='/admin/data/overview' element={<Data />} />
-        <Route path='/admin/betting/overview' element={<Betting />} />
-        <Route path='/admin/electricity/overview' element={<Electricity />} />
-        <Route path='/admin/tv/overview' element={<TV/>} />
-        <Route path='/admin/flights/overview' element={<Flights />} />
-        <Route path='/admin/education/overview' element={<Education />} />
-        <Route path='/admin/services' element={<Services />} />
-        <Route path='/admin/users/overview' element={<Users />} />
-        <Route path='/admin/chats' element={<Chats />} />
-        <Route path='/admin/transactions/:id' element={<TransactionDetails />} />
-        <Route path='/admin/settings/' element={<Settings />} />
-        <Route path='/admin/users/profile' element={<UserProfile />} />
-        <Route path='/admin/users/profile/:id' element={<UserProfileDetails />} />
-        <Route path='/admin/referrals/overview' element={<Referrals />} />
-        <Route path='/admin/reports' element={<Reports />} />
-        <Route path='/admin/withdrawal-requests' element={<WithdrawalRequests />} />
-        <Route path='/admin/notifications' element={<Notification />} />
+          {/* Support older reset links */}
+          <Route path="/resetpassword/:token" element={<ResetPassword />} />
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
+
+          {/* Show a helpful message if the reset token is missing */}
+          <Route path="/auth/reset-password" element={<ResetPassword />} />
+
+          <Route
+            path="/auth/secured-password"
+            element={<SecuredPassword />}
+          />
+
+        
+    {/* Protected Dashboard & Sub-pages */}
+      <Route path="/admin" element={<ProtectedRoute />}>
+      <Route path="dashboard" element={<DashboardPage />} />
+      <Route path="airtime/overview" element={<Airtime />} />
+      <Route path="data/overview" element={<Data />} />
+      <Route path="betting/overview" element={<Betting />} />
+      <Route path="electricity/overview" element={<Electricity />} />
+      <Route path="tv/overview" element={<TV />} />
+      <Route path="flights/overview" element={<Flights />} />
+      <Route path="education/overview" element={<Education />} />
+      <Route path="services" element={<Services />} />
+      <Route path="users/overview" element={<Users />} />
+      <Route path="chats" element={<Chats />} />
+      <Route path="transactions/:id" element={<TransactionDetails />} />
+      <Route path="settings" element={<Settings />} />
+      <Route path="users/profile" element={<UserProfile />} />
+      <Route path="users/profile/:id" element={<UserProfileDetails />} />
+      <Route path="referrals/overview" element={<Referrals />} />
+      <Route path="reports" element={<Reports />} />
+      <Route path="withdrawal-requests" element={<WithdrawalRequests />} />
+      <Route path="notifications" element={<Notification />} />
+      </Route>
+
       </Routes>
+      </Suspense>
     </BrowserRouter>
   )
 }

@@ -134,55 +134,11 @@ const Data = () => {
 			
 			
           <Transactions
-            title="Recent Transactions"
-            columns={[
-              { header: "Transaction ID", key: "transaction_id" },
-              {
-                header: "Customer",
-                key: "user",
-                render: (user) =>
-                  `${user?.first_name ?? ""} ${user?.last_name ?? ""}`.trim() || user?.username
-              },
-              { header: "Amount", key: "amount", render: (value) => formatAmount(value),},
-              { header: "Description", key: "provider" ,
-                 render: (provider) =>
-                  `${provider?.name ?? ""}`.trim() 
-              },
-              {
-                header: "Status",
-                key: "status",
-                render: (value) => (
-                  <span
-                    className={`px-5 py-2 rounded-full text-xs font-semibold ${
-                      value === "Successful"
-                        ? "bg-green-200 text-green-800"
-                        : value === "Pending"
-                        ? "bg-yellow-200 text-yellow-800"
-                        : "bg-red-200 text-red-800"
-                    }`}
-                  >
-                    {value}
-                  </span>
-                ),
-              },
-              { header: "Date | Time", key: "created_at", render: (value) => formatDate(value), },
-              {
-                header: "Action",
-                key: "action",
-                render: (_, row) =>
-            row.status == "Pending" && (
-              <button
-                onClick={() => handleRequery(row.id)}
-                disabled={loadingId === row.id}
-                className="px-5 py-2 bg-blue-600 text-white rounded-md text-xs hover:bg-blue-700 disabled:opacity-50"
-              >
-                {loadingId === row.id ? "Requerying..." : "Requery"}
-              </button>
-            )
-              },
-            ]}
-            data={dashboardData.transactions.length > 0 ? dashboardData.transactions : []}
-          />
+  title="Recent Transactions"
+  showActions={true}
+  onRequery={(transaction) => handleRequery(transaction.id)}
+  data={dashboardData.transactions ?? []}
+/>
         </div>
 	  
 	</div>
