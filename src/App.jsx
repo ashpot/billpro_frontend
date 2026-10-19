@@ -30,10 +30,14 @@ const WithdrawalRequests = lazy(
   () => import("./pages/dashboard/WithdrawalRequests")
 );
 const Notification = lazy(
-  () => import("./pages/dashboard/Notifications")
+  () => import("./pages/dashboard/NotificationsPage")
 );
 
 import UserDetailsPage from "./pages/dashboard/UserDetailsPage";
+import NotificationsPage from "./pages/dashboard/NotificationsPage";
+import SendNotificationPage from "./pages/dashboard/SendNotificationPage";
+import NotificationDetailsPage from "./pages/dashboard/NotificationDetailsPage";
+
 /*{ ---- auth pages ---- }*/
 import LoginPage from './pages/auth/LoginPage';
 import SignupPage from './pages/auth/SignupPage';
@@ -113,7 +117,20 @@ function App() {
       <Route path="referrals/overview" element={<Referrals />} />
       <Route path="reports" element={<Reports />} />
       <Route path="withdrawal-requests" element={<WithdrawalRequests />} />
-      <Route path="notifications" element={<Notification />} />
+      <Route
+  path="/admin/notifications"
+  element={<NotificationsPage />}
+/>
+
+<Route
+  path="/admin/notifications/send"
+  element={<SendNotificationPage />}
+/>
+
+<Route
+  path="/admin/notifications/:id"
+  element={<NotificationDetailsPage />}
+/>
       </Route>
 
       </Routes>
