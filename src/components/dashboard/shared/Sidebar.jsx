@@ -13,7 +13,7 @@ import {
   MdNotifications
 } from "react-icons/md";
 import { RiGraduationCapFill } from "react-icons/ri";
-import { PiUsersThreeFill, PiUsersFourFill } from "react-icons/pi";
+import { PiUsersThreeFill, PiUsersFourFill, PiWalletBold } from "react-icons/pi";
 import { HiMiniChatBubbleBottomCenterText } from "react-icons/hi2";
 import { CgArrowsExchange } from "react-icons/cg";
 import { PiWifiMediumBold } from "react-icons/pi";
@@ -129,6 +129,10 @@ const Sidebar = () => {
           >
             Others
           </h3>
+          <NavLink to="/admin/wallets/overview" className={linkClasses}>
+            <PiWalletBold size={24} className="mr-2" />
+            Wallets
+          </NavLink>
           <NavLink to="/admin/referrals/overview" className={linkClasses}>
             <PiUsersFourFill size={24} className="mr-2" />
             Referrals

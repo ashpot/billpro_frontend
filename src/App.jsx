@@ -27,7 +27,7 @@ const UserProfile = lazy(() => import("./pages/dashboard/UserProfile"));
 const Referrals = lazy(() => import("./pages/dashboard/Referrals"));
 const Reports = lazy(() => import("./pages/dashboard/Reports"));
 const WithdrawalRequests = lazy(
-  () => import("./pages/dashboard/WithdrawalRequests")
+  () => import("./pages/dashboard/WithdrawalRequestsPage")
 );
 const Notification = lazy(
   () => import("./pages/dashboard/NotificationsPage")
@@ -37,6 +37,9 @@ import UserDetailsPage from "./pages/dashboard/UserDetailsPage";
 import NotificationsPage from "./pages/dashboard/NotificationsPage";
 import SendNotificationPage from "./pages/dashboard/SendNotificationPage";
 import NotificationDetailsPage from "./pages/dashboard/NotificationDetailsPage";
+import WalletsPage from "./pages/dashboard/WalletsPage";
+import WalletDetailsPage from "./pages/dashboard/WalletDetailsPage";
+import WithdrawalRequestsPage from "./pages/dashboard/WithdrawalRequestsPage";
 
 /*{ ---- auth pages ---- }*/
 import LoginPage from './pages/auth/LoginPage';
@@ -131,6 +134,23 @@ function App() {
   path="/admin/notifications/:id"
   element={<NotificationDetailsPage />}
 />
+
+<Route
+  path="/admin/wallets/overview"
+  element={<WalletsPage />}
+/>
+
+<Route
+  path="/admin/wallets/:id"
+  element={<WalletDetailsPage />}
+/>
+
+<Route
+  path="/admin/withdrawal-requests"
+  element={<WithdrawalRequestsPage />}
+/>
+
+
       </Route>
 
       </Routes>
